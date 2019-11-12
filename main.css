@@ -143,13 +143,11 @@ i{
 @media only screen and (max-width: 1280px) {
     .top {
         grid-template-columns: 1fr;
-        grid-template-areas:
-        "top_content" "top_profile"
+        grid-template-areas: "top_content"
     }
 
     .top_profile {
-        width: 100%;
-        height: 100%;
+        display: none;
     }
 }
 
