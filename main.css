@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Work+Sans:300&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Work+Sans:300,400,600&display=swap');
+/* Created all the variables, that I will use in the code */
 :root {
     --accent: #DE677F;
     --light: #B4BFE3;
@@ -9,11 +9,72 @@
     --overlayEnd: rgba(55,55,86,.7);
     --ease: all 0.3s ease 0s;
 }
-
+/* Created the "global" rules*/
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+/*This doesn't let the navigation bar to reach sides of the page*/
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+/*Sets the background of the navigation bar*/
+header {
+  background: var(--dark);
+}
+/*Does not let the header to disappear after moving navigation to the right*/
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/*Moves the navigation bar to the right*/
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+}
+
+nav a {
+  color: var(--lightText);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--light);
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: var(--lightText);
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
 }
 
 body {
