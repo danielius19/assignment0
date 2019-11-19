@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Work+Sans:300,400,600&display=swap');
+/* Created all the variables, that I will use in the code */
+:root {
+    --accent: #DE677F;
+    --light: #B4BFE3;
+    --lightText: #97A0BE;
+    --dark: #373756;
+    --overlayStart: rgba(55,55,86,.9);
+    --overlayEnd: rgba(55,55,86,.7);
+    --ease: all 0.3s ease 0s;
+}
+/* Created the "global" rules for the page not to have any white borders*/
+* {
+    box-sizing: border-box; /*Adds padding inside the box, instead of outside of it*/
+    padding: 0;
+    margin: 0;
+}
+/*This doesn't let the navigation bar to reach sides of the page*/
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+/*Sets the background of the navigation bar*/
+header {
+  background: var(--dark);
+}
+/*Does not let the header to disappear after moving navigation to the right*/
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/*Moves the navigation bar to the right*/
+nav {
+  float: right;
+}
+/*Deletes the empty space around listed items and dots before them*/
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/*Lists items in a row, while putting space in between them and from the top*/
+nav li {
+  display: inline-block;
+  margin-right: 200px;
+  padding-top: 15px;
+  position: relative;
+}
+/*Sets the font, color and the size of the text in nav section  */
+nav a {
+  color: var(--lightText);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+/*Makes the text change its colour in the nav section, when hovering on text*/
+nav a:hover {
+  color: var(--light);
+}
+/*Creates a line above the text in the navigation bar*/
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: var(--lightText);
+  position: relative;
+  bottom: 15px;
+  width: 0%;
+  transition: all ease-in-out 200ms;
+}
+/*Makes the line to only appear after hovering on a word in navigation*/
+nav a:hover::before {
+  width: 100%;
+}
+/*Sets the background colour*/
+body {
+    background-color: var(--dark);
+}
+/*Sets the colour for the heading 1 and the icons*/
+h1, i {
+    color: var(--light);
+}
+/*Sets the colour for the paragraph and a tags*/
+p, a {
+    color: var(--lightText);
+    text-decoration: none;
+}
+/*Sets the font, its size and thickness for the heading 1*/
+h1 {
+    font-family: "Work Sans", sans-serif;
+    font-size: 72px;
+    font-weight: 300;
+}
+/*Makes wrapper class to take full size of the screen as well as makes top class to be inside the grid*/
+.wrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "top"
+}
+
+.top {
+    grid-area: top;
+    /*Sets the background image and overlay (BLUE), makes it not to repeat, be centered and to take full grid block*/
+    background-image: linear-gradient(to right, var(--overlayStart), var(--overlayEnd)), url(images/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*Puts the content inside this class in its places (image and text)*/
+    display: grid;
+    grid-template-columns: 1fr 600px 600px 1fr;
+    grid-gap: 20px;
+    grid-template-areas: ". top_profile top_content ."
+}
+/*Centers the text   relatively to the page*/
+.top_content {
+    grid-area: top_content;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+}
+/*Sets the font, size and thickness for the subtitle class*/
+.subtitle {
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 18;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+/*Creates some space between subtitle class and social links*/
+.title {
+    margin-bottom: 80px;
+}
+
+/*Creates a box for the profile image and positions it properly*/
+.top_profile {
+    grid-area: top_profile;
+    align-self: center;
+    justify-self: center;
+    background-image: url(images/profile.jpg);
+    width: 526px;
+    height: 526px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/*Initializes flex box*/
+.social {
+    display: flex;
+}
+/*Positions the social items*/
+.social_item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+/*Positions social items, but excludes the first one*/
+.social_item:not(:first-child) {
+    margin-left: 50px;
+}
+/*Sets the size of the social icons*/
+i{
+    font-size: 25px;
+}
+/*Sets the font rules for the social links*/
+.social_copy {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 15px;
+    transition: var(--ease);
+}
+/*Makes the social text and icons to brighten after hovering on them*/
+.social_copy:hover {
+    filter: brightness(150%);
+}
+/*Makes the site to adapt to smaller screen. Changes the grid to have only one column*/
+@media only screen and (max-width: 1280px) {
+    .top {
+        grid-template-columns: 1fr;
+        grid-template-areas: "top_content"
+    }
+
+    .top_profile {
+        display: none;
+    }
+}
+/*Makes an adaptation for even smaller screens*/
+@media only screen and (max-width: 600px) {
+    .top_content {
+        transform: scale(.85);
+    }
+
+    .social {
+        flex-direction: column;
+    }
+    
+    .social_item:not(:first-child) {
+        margin-left: 0px;
+    }
+
+    .top_profile {
+        display: none;
+    }   
+
+    .underline:after {
+        bottom: -5px;
+    }
+}
