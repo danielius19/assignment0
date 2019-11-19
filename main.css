@@ -34,45 +34,44 @@ header::after {
 nav {
   float: right;
 }
-
+/*Deletes the empty space around listed items and dots before them*/
 nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
+/*Lists items in a row, while putting space in between them and from the top*/
 nav li {
   display: inline-block;
-  margin-left: 70px;
-  padding-top: 23px;
-
+  margin-right: 200px;
+  padding-top: 15px;
   position: relative;
 }
-
+/*Sets the font, color and the size of the text in nav section  */
 nav a {
   color: var(--lightText);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 14px;
 }
-
+/*Makes the text change its colour in the nav section, when hovering on text*/
 nav a:hover {
   color: var(--light);
 }
-
+/*Creates a line above the text in the navigation bar*/
 nav a::before {
   content: '';
   display: block;
   height: 5px;
   background-color: var(--lightText);
-
   position: absolute;
   top: 0;
   width: 0%;
-
   transition: all ease-in-out 250ms;
 }
-
+/*Makes the line to only appear above specific word in the nav*/
 nav a:hover::before {
   width: 100%;
 }
