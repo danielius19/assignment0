@@ -66,8 +66,8 @@ nav a::before {
   display: block;
   height: 5px;
   background-color: var(--lightText);
-  position: relative;
-  bottom: 15px;
+  position: absolute;
+  top: 0;
   width: 0%;
   transition: all ease-in-out 200ms;
 }
@@ -115,7 +115,7 @@ h1 {
     grid-gap: 20px;
     grid-template-areas: ". top_profile top_content ."
 }
-/*Centers the text   relatively to the page*/
+/*Centers the relatively to the page*/
 .top_content {
     grid-area: top_content;
     align-self: center;
@@ -135,7 +135,30 @@ h1 {
 .title {
     margin-bottom: 80px;
 }
-
+/*Gives a refrence for the red underline*/
+.underline {
+    text-decoration: none;
+    position: relative;
+}
+/*Positions the red line, gives it size and creates the animation*/
+.underline:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    border-width: 1.5px;
+    border-style: solid;
+    color: var(--accent);
+    animation-name: underline;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+/*Animates the underline (from 0 to 100%)*/
+@keyframes underline {
+    0% {width: 0%}
+    100% {width: 100%}
+}
 /*Creates a box for the profile image and positions it properly*/
 .top_profile {
     grid-area: top_profile;

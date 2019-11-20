@@ -1,34 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Work+Sans:300,400,600&display=swap');
 /* Created all the variables, that I will use in the code */
 :root {
-    --accent: #DE677F;
-    --light: #B4BFE3;
-    --lightText: #97A0BE;
-    --dark: #373756;
-    --overlayStart: rgba(55,55,86,.9);
-    --overlayEnd: rgba(55,55,86,.7);
+    --paragraph: #B4BFE3;
+    --title: #97A0BE;
+    --background: #373756;
+    --coverdark: rgba(55,55,86,.9);
+    --coverlight: rgba(55,55,86,.7);
     --ease: all 0.3s ease 0s;
 }
 /* Created the "global" rules for the page not to have any white borders*/
 * {
-    box-sizing: border-box; /*Adds padding inside the box, instead of outside of it*/
     padding: 0;
     margin: 0;
 }
 /*This doesn't let the navigation bar to reach sides of the page*/
-.container {
+.navigation {
 	width: 80%;
 	margin: 0 auto;
 }
 /*Sets the background of the navigation bar*/
 header {
-  background: var(--dark);
-}
-/*Does not let the header to disappear after moving navigation to the right*/
-header::after {
-  content: '';
-  display: table;
-  clear: both;
+  background: var(--background);
+  height: 40px;
 }
 /*Moves the navigation bar to the right*/
 nav {
@@ -49,7 +42,7 @@ nav li {
 }
 /*Sets the font, color and the size of the text in nav section  */
 nav a {
-  color: var(--lightText);
+  color: var(--title);
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   text-decoration: none;
@@ -58,16 +51,16 @@ nav a {
 }
 /*Makes the text change its colour in the nav section, when hovering on text*/
 nav a:hover {
-  color: var(--light);
+  color: var(--paragraph);
 }
 /*Creates a line above the text in the navigation bar*/
 nav a::before {
   content: '';
   display: block;
   height: 5px;
-  background-color: var(--lightText);
-  position: absolute;
-  top: 0;
+  background-color: var(--title);
+  position: relative;
+  bottom: 15px;
   width: 0%;
   transition: all ease-in-out 200ms;
 }
@@ -75,17 +68,23 @@ nav a::before {
 nav a:hover::before {
   width: 100%;
 }
-/*Sets the background colour*/
+/*Sets the background of the body*/
 body {
-    background-color: var(--dark);
+    background-color: var(--background);
+    background-image: linear-gradient(to right, var(--coverdark), var(--coverlight)), url(images/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: -1001;
 }
 /*Sets the colour for the heading 1 and the icons*/
 h1, i {
-    color: var(--light);
+    color: var(--paragraph);
 }
 /*Sets the colour for the paragraph and a tags*/
 p, a {
-    color: var(--lightText);
+    color: var(--title);
     text-decoration: none;
 }
 /*Sets the font, its size and thickness for the heading 1*/
@@ -99,25 +98,23 @@ h1 {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas: "top"
+    grid-template-areas: "top";
+    margin-top: -40px;
+    position: relative;
+    z-index: -1000;
 }
 
 .top {
     grid-area: top;
-    /*Sets the background image and overlay (BLUE), makes it not to repeat, be centered and to take full grid block*/
-    background-image: linear-gradient(to right, var(--overlayStart), var(--overlayEnd)), url(images/background.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     /*Puts the content inside this class in its places (image and text)*/
     display: grid;
     grid-template-columns: 1fr 600px 600px 1fr;
     grid-gap: 20px;
-    grid-template-areas: ". top_profile top_content ."
+    grid-template-areas: ". photo text .";
 }
-/*Centers the relatively to the page*/
-.top_content {
-    grid-area: top_content;
+/*Centers the text   relatively to the page*/
+.text {
+    grid-area: text;
     align-self: center;
     justify-self: center;
     padding: 10px;
@@ -132,36 +129,13 @@ h1 {
     margin-bottom: 20px;
 }
 /*Creates some space between subtitle class and social links*/
-.title {
+.name {
     margin-bottom: 80px;
 }
-/*Gives a refrence for the red underline*/
-.underline {
-    text-decoration: none;
-    position: relative;
-}
-/*Positions the red line, gives it size and creates the animation*/
-.underline:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -15px;
-    border-width: 1.5px;
-    border-style: solid;
-    color: var(--accent);
-    animation-name: underline;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease;
-}
-/*Animates the underline (from 0 to 100%)*/
-@keyframes underline {
-    0% {width: 0%}
-    100% {width: 100%}
-}
+
 /*Creates a box for the profile image and positions it properly*/
-.top_profile {
-    grid-area: top_profile;
+.photo {
+    grid-area: photo;
     align-self: center;
     justify-self: center;
     background-image: url(images/profile.jpg);
@@ -170,19 +144,20 @@ h1 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin-top: 40px;
 }
 /*Initializes flex box*/
 .social {
     display: flex;
 }
 /*Positions the social items*/
-.social_item {
+.social_full {
     display: flex;
     align-items: center;
     margin: 10px 0;
 }
 /*Positions social items, but excludes the first one*/
-.social_item:not(:first-child) {
+.social_full:not(:first-child) {
     margin-left: 50px;
 }
 /*Sets the size of the social icons*/
@@ -190,7 +165,7 @@ i{
     font-size: 25px;
 }
 /*Sets the font rules for the social links*/
-.social_copy {
+.social_text {
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -198,23 +173,23 @@ i{
     transition: var(--ease);
 }
 /*Makes the social text and icons to brighten after hovering on them*/
-.social_copy:hover {
+.social_text:hover {
     filter: brightness(150%);
 }
 /*Makes the site to adapt to smaller screen. Changes the grid to have only one column*/
 @media only screen and (max-width: 1280px) {
     .top {
         grid-template-columns: 1fr;
-        grid-template-areas: "top_content"
+        grid-template-areas: "text"
     }
 
-    .top_profile {
+    .photo {
         display: none;
     }
 }
 /*Makes an adaptation for even smaller screens*/
 @media only screen and (max-width: 600px) {
-    .top_content {
+    .text {
         transform: scale(.85);
     }
 
@@ -222,11 +197,11 @@ i{
         flex-direction: column;
     }
     
-    .social_item:not(:first-child) {
+    .social_full:not(:first-child) {
         margin-left: 0px;
     }
 
-    .top_profile {
+    .photo {
         display: none;
     }   
 
