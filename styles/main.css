@@ -204,6 +204,12 @@ i{
 }
 /*Makes an adaptation for even smaller screens*/
 @media (max-width: 600px) {
+
+    .top {
+        grid-template-columns: 1fr;
+        grid-template-areas: "text"
+    }
+
     .navigation
     {
         transform: scale(.5);
