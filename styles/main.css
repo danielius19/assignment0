@@ -71,7 +71,7 @@ nav a:hover::before {
 /*Sets the background of the body*/
 body {
     background-color: var(--background);
-    background-image: linear-gradient(to right, var(--coverdark), var(--coverlight)), url(images/background.jpg);
+    background-image: linear-gradient(to right, var(--coverdark), var(--coverlight)), url(../images/background.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -138,7 +138,7 @@ h1 {
     grid-area: photo;
     align-self: center;
     justify-self: center;
-    background-image: url(images/profile.jpg);
+    background-image: url(../images/profile.jpg);
     width: 526px;
     height: 526px;
     background-size: cover;
