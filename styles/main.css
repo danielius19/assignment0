@@ -184,17 +184,39 @@ i{
     }
 
     .photo {
-        display: none;
+        max-width: 263px;
+        max-height: 263px;
+        position: fixed;
+        top: 100px;
+        left: 50px;
+    }
+    .navigation {
+        position: fixed;
+        left: 25vh;
+    }
+    .text {
+        position: fixed;
+        transform: scale(.8);
+        top: 20vh;
+        left: 50vh;
+        text-align: center;
     }
 }
 /*Makes an adaptation for even smaller screens*/
 @media only screen and (max-width: 600px) {
     .navigation
     {
-        transform: scale(.85);
+        transform: scale(.5);
+        position: fixed;
+        top: -7vh;
+        text-align: center;
     }
+
     .text {
-        transform: scale(.85);
+        transform: scale(.5);
+        position: fixed;
+        top: 20vh;
+        left: 17vh;
     }
 
     .social {
@@ -203,13 +225,15 @@ i{
     
     .social_full:not(:first-child) {
         margin-left: 0px;
-    }
+    }  
 
     .photo {
-        display: none;
-    }   
-
-    .underline:after {
-        bottom: -5px;
+        max-width: 131px;
+        max-height: 131px;
+        position: fixed;
+        top: 10vh;
+        left: 39vh;
+        border-radius: 100%;
     }
+
 }
