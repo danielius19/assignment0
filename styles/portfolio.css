@@ -142,7 +142,7 @@ hr {
     font-family: 'Open Sans', sans-serif;
 }
 
-@media only screen and (max-width: 500px) {
+@media (max-width: 600px) {
     .navigation
     {
         transform: scale(.5);
@@ -151,8 +151,7 @@ hr {
         text-align: center;
     }
     
-    .gallery-item,
-    body {
+    .gallery-item, body {
         max-width: 30%;
         grid-column: 2;
         font-family: 'Open Sans', sans-serif;
