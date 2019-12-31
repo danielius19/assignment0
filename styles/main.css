@@ -47,7 +47,7 @@ nav a {
   font-weight: 700;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 18px;
 }
 /*Makes the text change its colour in the nav section, when hovering on text*/
 nav a:hover {
@@ -204,6 +204,9 @@ i{
 }
 /*Makes an adaptation for even smaller screens*/
 @media (max-width: 600px) {
+    nav a {
+        font-size: 16px;
+      }
 
     .top {
         grid-template-columns: 1fr;
